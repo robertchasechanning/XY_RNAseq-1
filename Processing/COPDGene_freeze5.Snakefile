@@ -1,6 +1,6 @@
 import os
 
-configfile: "blood.config.json"
+configfile: "copdgene_freeze5_config.json"
 
 # Tool paths:
 fastqc_path = "fastqc"
@@ -188,6 +188,8 @@ rule prep_refs:
     params:
         samtools = samtools_path,
         bwa = bwa_path
+    conda:
+        srcdir("../workflow/envs/prep_refs.yaml")
     run:
         # faidx
         shell("{params.samtools} faidx {input.ref}")
@@ -229,7 +231,9 @@ rule trimmomatic:
         trailing = 25,
         winsize = 4,
         winqual = 25,
-        minlen = 40   
+        minlen = 40
+    conda:
+        srcdir("../workflow/envs/trimmomatic.yaml")
     shell:
         "trimmomatic PE -phred33 -threads {params.threads} -trimlog {output.logfile} "
         "{input.fq1} {input.fq2} {output.out_fq1} {output.out_fq1_unpair} "
@@ -257,6 +261,8 @@ rule HISAT_paired_females:
         out_1 = "HISAT/tmp/{female_sample}_HISAT_pair_trim_XX.sam"
     params:
         HISAT_Index_female = config["HG38_Transcriptome_Index_HISAT_Path_female"],
+    conda:
+        srcdir("../envs/hisat2.yaml")
     shell:
         "hisat2 --dta -q --phred33 -p 8 -x {params.HISAT_Index_female} -1 {input.Trimmed_FASTQ1} -2 {input.Trimmed_FASTQ2} -S {output.out_1}"
 
