@@ -1,6 +1,6 @@
 import os
 
-configfile: "copdgene_freeze5_config.json"
+configfile: srcdir("copdgene_freeze5_config.json")
 
 # Tool paths:
 fastqc_path = "fastqc"
