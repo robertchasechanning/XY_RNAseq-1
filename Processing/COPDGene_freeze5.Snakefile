@@ -212,10 +212,10 @@ rule mk_sy_ln_fastqs:
         ln -s {input.original_2} {output.R2_out}
         """
 
-rule trimmomatic:
+rule trimmomatic: 
     input:
-        fq1 = lambda wildcards: os.path.join(fastq_directory, config[wildcards.sample_name]["fq1_sy"]),
-        fq2 = lambda wildcards: os.path.join(fastq_directory, config[wildcards.sample_name]["fq2_sy"]),
+        fq1 = rules.mk_sy_ln_fastqs.output.R1_out,
+        fq2 = rules.mk_sy_ln_fastqs.output.R2_out,
         ADAPTER_FASTA = config["adapter_fasta"]
     output:
         out_fq1 = "trimmed_fastqs/{sample_name}_trimmed_1.fastq",
