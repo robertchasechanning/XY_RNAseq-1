@@ -24,7 +24,7 @@ if [ ! -d ${logdir} ]; then mkdir ${logdir}; fi
 #export clustersettings="qsub -l lx7,virtual_free=100G,12hour=true -p ${study} -cwd -S /bin/bash -v PATH -o ${logdir} -e ${logdir}"
 #export clustersettings_longterm="qsub -l lx7,virtual_free=100G -p ${study} -cwd -S /bin/bash -v PATH -o ${logdir} -e ${logdir}"
 export profile=/udd/rerpc/repos/snakemake_profiles/channing_mrna_rnaseq_alignment/
-export profile_longterm=/udd/rerpc/repos/channing_mrna_rnaseq_alignment/genericproject_12hour_envmod
+export profile_longterm=$profile
 export alignment_config_name=alignment_config.yaml
 
 echo "transferqc_yaml: ${transferyamlfile}" > ${alignment_config_name}
