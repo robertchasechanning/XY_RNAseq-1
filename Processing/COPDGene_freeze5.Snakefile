@@ -216,7 +216,7 @@ rule trimmomatic:
     input:
         fq1 = lambda wildcards: os.path.join(fastq_directory, config[wildcards.sample_name]["fq1_sy"]),
         fq2 = lambda wildcards: os.path.join(fastq_directory, config[wildcards.sample_name]["fq2_sy"]),
-        ADAPTER_FASTA = "/mnt/storage/SAYRES/GTEx/DE_genomeFilters/00_tools/Trimmomatic-0.36/adapters/TruSeq3-PE.fa:2:30:10"
+        ADAPTER_FASTA = config["adapter_fasta"]
     output:
         out_fq1 = "trimmed_fastqs/{sample_name}_trimmed_1.fastq",
         out_fq2 = "trimmed_fastqs/{sample_name}_trimmed_2.fastq",
