@@ -190,7 +190,7 @@ rule prep_refs:
         bwa = bwa_path
     conda:
         srcdir("../workflow/envs/prep_refs.yaml")
-    run:
+    shell:
         """echo faidx;
         {params.samtools} faidx {input.ref};
         echo .dict;
