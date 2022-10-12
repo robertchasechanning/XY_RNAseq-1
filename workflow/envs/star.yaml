@@ -1,0 +1,11 @@
+name: star
+channels:
+  - https://chanart.bwh.harvard.edu/artifactory/api/conda/conda-prod-local/rerpc
+  - conda-forge
+  - bioconda
+  - https://chanart.bwh.harvard.edu/artifactory/api/conda/conda-prod-local/rejpz
+  - https://chanart.bwh.harvard.edu/artifactory/api/conda/conda-prod-local/resta
+  - eumetsat
+dependencies:
+  - star=2.7.10a=h9ee0642_0
+prefix: /udd/rerpc/.conda/envs/star
