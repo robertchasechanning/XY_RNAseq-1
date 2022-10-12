@@ -201,8 +201,8 @@ rule prep_refs:
 
 rule mk_sy_ln_fastqs:
     input:
-        original_1 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + config[wildcards.sample_name]["fq1"],
-        original_2 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + config[wildcards.sample_name]["fq2"]
+        original_1 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + "/" + config[wildcards.sample_name]["fq1"],
+        original_2 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + "/" + config[wildcards.sample_name]["fq2"]
 #    input:
 #        original_1 = lambda wildcards: config[wildcards.sample_name]["fq1"],
 #        original_2 = lambda wildcards: config[wildcards.sample_name]["fq2"]
