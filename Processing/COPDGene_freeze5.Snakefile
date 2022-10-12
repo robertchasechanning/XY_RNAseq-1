@@ -191,14 +191,12 @@ rule prep_refs:
     conda:
         srcdir("../workflow/envs/prep_refs.yaml")
     run:
-        # faidx
-        shell("{params.samtools} faidx {input.ref}")
-
-        # .dict
-        shell("{params.samtools} dict -o {output.dict} {input.ref}")
-
-        # bwa
-        shell("{params.bwa} index {input.ref}")
+        """echo faidx;
+        {params.samtools} faidx {input.ref};
+        echo .dict;
+        {params.samtools} dict -o {output.dict} {input.ref};
+        echo bwa;
+        {params.bwa} index {input.ref}"""
 
 
 rule mk_sy_ln_fastqs:
