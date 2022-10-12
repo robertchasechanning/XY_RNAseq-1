@@ -168,7 +168,7 @@ rule all:
         expand("refs/{ref_type}.fa.amb", ref_type = REF_TYPE),
         expand("refs/{ref_type}.dict", ref_type = REF_TYPE)
 
-local rule prep_refs_mk_sy_ln:
+localrule prep_refs_mk_sy_ln:
     input:
         ref = lambda wildcards: config["genome_paths"][wildcards.ref_type]
     output:
@@ -201,7 +201,7 @@ rule prep_refs:
         shell("{params.bwa} index {input.ref}")
 
 
-local rule mk_sy_ln_fastqs:
+localrule mk_sy_ln_fastqs:
     input:
         original_1 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + config[wildcards.sample_name]["fq1"],
         original_2 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + config[wildcards.sample_name]["fq2"]
