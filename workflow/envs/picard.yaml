@@ -39,7 +39,7 @@ dependencies:
   - pcre=8.44=he6710b0_0
   - picard=2.25.6=hdfd78af_0
   - pixman=0.40.0=h7b6447c_0
-  - r-base=3.2.2=0
+  - r-base
   - readline=8.1=h27cfd23_0
   - tk=8.6.10=hbc83047_0
   - xz=5.2.5=h7b6447c_0
