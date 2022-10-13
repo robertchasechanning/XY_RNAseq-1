@@ -211,8 +211,8 @@ rule mk_sy_ln_fastqs:
         R2_out = "fastq_files/{sample_name}_2.fastq"
     shell:
         """
-        ln -s {input.original_1} {output.R1_out};
-        ln -s {input.original_2} {output.R2_out}
+        zcat {input.original_1} > {output.R1_out};
+        zcat {input.original_2} > {output.R2_out}
         """
 
 rule trimmomatic: 
