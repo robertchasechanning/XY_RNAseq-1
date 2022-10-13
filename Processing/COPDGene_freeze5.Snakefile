@@ -236,7 +236,8 @@ rule trimmomatic:
     conda:
         srcdir("../workflow/envs/trimmomatic.yaml")
     shell:
-        "trimmomatic PE -phred33 -threads {params.threads} -trimlog {output.logfile} "
+#        "trimmomatic PE -phred33 -threads {params.threads} -trimlog {output.logfile} "
+        "trimmomatic PE -threads {params.threads} -trimlog {output.logfile} "
         "{input.fq1} {input.fq2} {output.out_fq1} {output.out_fq1_unpair} "
         "{output.out_fq2} {output.out_fq2_unpair} "
         "ILLUMINACLIP:{input.ADAPTER_FASTA} "
