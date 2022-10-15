@@ -236,14 +236,17 @@ rule trimmomatic:
     conda:
         srcdir("../workflow/envs/trimmomatic.yaml")
     shell:
-#        "trimmomatic PE -phred33 -threads {params.threads} -trimlog {output.logfile} "
-        "trimmomatic PE -threads {params.threads} -trimlog {output.logfile} "
+        "trimmomatic PE -phred33 -threads {params.threads} -trimlog {output.logfile} "
         "{input.fq1} {input.fq2} {output.out_fq1} {output.out_fq1_unpair} "
         "{output.out_fq2} {output.out_fq2_unpair} "
-        "ILLUMINACLIP:{input.ADAPTER_FASTA} "
+        "ILLUMINACLIP:{input.ADAPTER_FASTA}:{params.leading}:{params.trailing}:{params.winsize}:{params.winqual} MINLEN:{params.minlen}"
+
+
+"""        "ILLUMINACLIP:{input.ADAPTER_FASTA} "
         "LEADING:{params.leading} TRAILING:{params.trailing} "
         "SLIDINGWINDOW:{params.winsize}:{params.winqual} MINLEN:{params.minlen}"
-
+"""
+        
 rule HISAT_paired_males:
     input:
         Trimmed_FASTQ1 = "trimmed_fastqs/{male_sample}_trimmed_1.fastq",
