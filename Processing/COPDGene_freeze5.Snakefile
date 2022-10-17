@@ -435,7 +435,7 @@ rule HISAT_feautreCounts_gene_males:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
         
 # females
 rule HISAT_samtools_view_females:
@@ -599,7 +599,7 @@ rule HISAT_feautreCounts_gene_females:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
 
 # HISAT DEFAULT
@@ -791,7 +791,7 @@ rule HISAT_DEF_DEF_feautreCounts_gene_males:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
         
 # females
@@ -958,7 +958,7 @@ rule HISAT_DEF_feautreCounts_gene_females:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
 #--------------
 #  STAR
@@ -1142,7 +1142,7 @@ rule STAR_feautreCounts_gene_males:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
         
 # females
@@ -1298,7 +1298,7 @@ rule STAR_feautreCounts_gene_females:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
 
 #------- DEFAULT
@@ -1484,7 +1484,7 @@ rule STAR_DEF_feautreCounts_gene_males:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
         
 # females
@@ -1639,5 +1639,5 @@ rule STAR_DEF_feautreCounts_gene_females:
     conda:
         srcdir("../workflow/envs/featureCounts.yaml")
     shell:
-        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_name -a {params.GTF} -o {output.counts} {input.BAM}"
+        "{params.featureCounts} -T 8 --primary -p -s 1 -t exon -g gene_id -a {params.GTF} -o {output.counts} {input.BAM}"
 
