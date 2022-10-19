@@ -217,7 +217,7 @@ rule generate_star_indices_female:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "mkdir {params.gencodedir}/star_female_tmp; STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_female --genomeFastaFiles {input.female} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}/star_female_tmp"
+        "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_female --genomeFastaFiles {input.female} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}star_female_tmp"
 
 rule generate_star_indices_male:
     input:
@@ -233,7 +233,7 @@ rule generate_star_indices_male:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "mkdir {params.gencodedir}/star_male_tmp; STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_male --genomeFastaFiles {input.male} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}/star_male_tmp"
+        "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_male --genomeFastaFiles {input.male} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}star_male_tmp"
 
 
 rule generate_star_indices_default:
@@ -250,7 +250,7 @@ rule generate_star_indices_default:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "mkdir {params.gencodedir}/star_default_tmp; STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_default --genomeFastaFiles {input.default} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}/star_default_tmp"
+        "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_default --genomeFastaFiles {input.default} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}star_default_tmp"
 
         
 
