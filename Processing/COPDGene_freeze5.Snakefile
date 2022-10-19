@@ -295,7 +295,7 @@ rule HISAT_paired_females:
     params:
         HISAT_Index_female = config["HG38_Transcriptome_Index_HISAT_Path_female"],
     conda:
-        srcdir("../envs/hisat2.yaml")
+        srcdir("../workflow/envs/hisat2.yaml")
     shell:
         "hisat2 --dta -q --phred33 -p 8 -x {params.HISAT_Index_female} -1 {input.Trimmed_FASTQ1} -2 {input.Trimmed_FASTQ2} -S {output.out_1}"
 
