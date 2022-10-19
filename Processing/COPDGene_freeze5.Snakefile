@@ -203,7 +203,7 @@ rule prep_refs:
 #export male=/d/tmp/regeps/regep00/studies/pilots/analyses/rerpc/xyrnaseq_rna_mrna_redld/XY_RNAseq/Make_references/gencode/GRCh38.p12.genome.XYonly.fa
 #export def=/d/tmp/regeps/regep00/studies/pilots/analyses/rerpc/xyrnaseq_rna_mrna_redld/XY_RNAseq/Make_references/gencode/gencode.v29.transcripts.fa
 
-rule generate_star_indices:
+rule generate_star_indices_female:
     input:
         female=srcdir("../Make_references/ensembl/GRCh38_Ymasked_reference.fa"),
         male=srcdir("../Make_references/ensembl/GRCh38_YPARs_masked_reference.fa"),
@@ -213,13 +213,40 @@ rule generate_star_indices:
         gencodedir=srcdir("../Make_references/gencode/"),
     output:
         female=srcdir("../Make_references/gencode/star_female/sjdbInfo.txt"),
-        male=srcdir("../Make_references/gencode/star_male/sjdbInfo.txt"),
-        default=srcdir("../Make_references/gencode/star_default/sjdbInfo.txt")
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
         "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_female --genomeFastaFiles {input.female} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}/star_female_tmp"
+
+rule generate_star_indices_male:
+    input:
+        female=srcdir("../Make_references/ensembl/GRCh38_Ymasked_reference.fa"),
+        male=srcdir("../Make_references/ensembl/GRCh38_YPARs_masked_reference.fa"),
+        default=srcdir("../Make_references/ensembl/GRCh38_wholeGenome_reference.fa"),
+        transcriptome=srcdir("../Make_references/ensembl/Homo_sapiens.GRCh38.107.chr.gtf")
+    params:
+        gencodedir=srcdir("../Make_references/gencode/"),
+    output:
+        male=srcdir("../Make_references/gencode/star_male/sjdbInfo.txt")
+    conda:
+        srcdir("../workflow/envs/star.yaml")
+    shell:
         "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_male --genomeFastaFiles {input.male} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}/star_male_tmp"
+
+
+rule generate_star_indices_default:
+    input:
+        female=srcdir("../Make_references/ensembl/GRCh38_Ymasked_reference.fa"),
+        male=srcdir("../Make_references/ensembl/GRCh38_YPARs_masked_reference.fa"),
+        default=srcdir("../Make_references/ensembl/GRCh38_wholeGenome_reference.fa"),
+        transcriptome=srcdir("../Make_references/ensembl/Homo_sapiens.GRCh38.107.chr.gtf")
+    params:
+        gencodedir=srcdir("../Make_references/gencode/"),
+    output:
+        default=srcdir("../Make_references/gencode/star_default/sjdbInfo.txt")
+    conda:
+        srcdir("../workflow/envs/star.yaml")
+    shell:
         "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_default --genomeFastaFiles {input.default} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}/star_default_tmp"
 
         
@@ -228,9 +255,9 @@ rule mk_sy_ln_fastqs:
     input:
         original_1 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + "/" + config[wildcards.sample_name]["fq1"],
         original_2 = lambda wildcards: config[wildcards.sample_name]["fq_path"] + "/" + config[wildcards.sample_name]["fq2"],
-        male=rules.generate_star_indices.output.male,
-        female=rules.generate_star_indices.output.female,
-        default=rules.generate_star_indices.output.default,
+        male=rules.generate_star_indices_male.output.male,
+        female=rules.generate_star_indices_female.output.female,
+        default=rules.generate_star_indices_default.output.default,
 #    input:
 #        original_1 = lambda wildcards: config[wildcards.sample_name]["fq1"],
 #        original_2 = lambda wildcards: config[wildcards.sample_name]["fq2"]
