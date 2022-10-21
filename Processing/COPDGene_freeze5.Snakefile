@@ -1035,7 +1035,7 @@ rule STAR_paired_males:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "STAR --genomeDir {params.STAR_Index_male} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s {output.out_1}Aligned.out.bam {output.out_1}"
+        "STAR --genomeDir {params.STAR_Index_male} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s `pwd`/{output.out_1}Aligned.out.bam {output.out_1}"
 
 rule STAR_paired_females:
     input:
@@ -1049,7 +1049,7 @@ rule STAR_paired_females:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "STAR --genomeDir {params.STAR_Index_female} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s {output.out_1}Aligned.out.bam {output.out_1}"
+        "STAR --genomeDir {params.STAR_Index_female} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s `pwd`/{output.out_1}Aligned.out.bam {output.out_1}"
 
 rule STAR_bam_sort_males:    
     input:
@@ -1375,7 +1375,7 @@ rule STAR_DEF_STAR_paired_males:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "STAR --genomeDir {params.STAR_Index_DEF} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s {output.out_1}Aligned.out.bam {output.out_1}"
+        "STAR --genomeDir {params.STAR_Index_DEF} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s `pwd`/{output.out_1}Aligned.out.bam {output.out_1}"
 
 rule STAR_DEF_STAR_paired_females:
     input:
@@ -1389,7 +1389,7 @@ rule STAR_DEF_STAR_paired_females:
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
-        "STAR --genomeDir {params.STAR_Index_DEF} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s {output.out_1}Aligned.out.bam {output.out_1}"
+        "STAR --genomeDir {params.STAR_Index_DEF} --sjdbGTFfile {params.STAR_DEF_GTF} --outSAMstrandField intronMotif --outFilterIntronMotifs RemoveNoncanonical --readFilesIn {input.Trimmed_FASTQ1} {input.Trimmed_FASTQ2} --outSAMtype BAM Unsorted --outFileNamePrefix {output.out_1} --runThreadN 8; ln -s `pwd`/{output.out_1}Aligned.out.bam {output.out_1}"
 
 rule STAR_DEF_bam_sort_males:    
     input:
