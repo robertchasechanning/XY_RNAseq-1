@@ -213,7 +213,7 @@ rule generate_star_indices_female:
         gencodedir=srcdir("../Make_references/gencode/"),
     output:
         female=srcdir("../Make_references/gencode/star_female/sjdbInfo.txt"),
-        tmp=directory(srcdir("../Make_references/gencode/star_female_tmp"))
+#        tmp=directory(srcdir("../Make_references/gencode/star_female_tmp"))
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
@@ -229,7 +229,7 @@ rule generate_star_indices_male:
         gencodedir=srcdir("../Make_references/gencode/"),
     output:
         male=srcdir("../Make_references/gencode/star_male/sjdbInfo.txt"),
-        tmp=directory(srcdir("../Make_references/gencode/star_male_tmp"))
+#        tmp=directory(srcdir("../Make_references/gencode/star_male_tmp"))
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
@@ -246,13 +246,13 @@ rule generate_star_indices_default:
         gencodedir=srcdir("../Make_references/gencode/"),
     output:
         default=srcdir("../Make_references/gencode/star_default/sjdbInfo.txt"),
-        tmp=directory(srcdir("../Make_references/gencode/star_default_tmp"))
+#        tmp=directory(srcdir("../Make_references/gencode/star_default_tmp"))
     conda:
         srcdir("../workflow/envs/star.yaml")
     shell:
         "STAR --runMode genomeGenerate --genomeDir {params.gencodedir}/star_default --genomeFastaFiles {input.default} --sjdbGTFfile {input.transcriptome} --sjdbOverhang 74 --outTmpDir {params.gencodedir}star_default_tmp"
 
-        
+
 
 rule mk_sy_ln_fastqs:
     input:
