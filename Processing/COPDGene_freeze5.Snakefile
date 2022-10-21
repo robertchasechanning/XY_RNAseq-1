@@ -442,7 +442,7 @@ rule HISAT_samSub_chrX_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule HISAT_stats_chrX_bam_males:
     input:
@@ -467,7 +467,7 @@ rule HISAT_samSub_chrY_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule HISAT_stats_chrY_bam_males:
     input:
@@ -607,7 +607,7 @@ rule HISAT_samSub_chrX_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule HISAT_stats_chrX_bam_females:
     input:
@@ -632,7 +632,7 @@ rule HISAT_samSub_chrY_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule HISAT_stats_chrY_bam_females:
     input:
@@ -799,7 +799,7 @@ rule HISAT_DEF_samSub_chrX_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule HISAT_DEF_stats_chrX_bam_males:
     input:
@@ -824,7 +824,7 @@ rule HISAT_DEF_samSub_chrY_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule HISAT_DEF_stats_chrY_bam_males:
     input:
@@ -965,7 +965,7 @@ rule HISAT_DEF_samSub_chrX_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule HISAT_DEF_stats_chrX_bam_females:
     input:
@@ -990,7 +990,7 @@ rule HISAT_DEF_samSub_chrY_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule HISAT_DEF_stats_chrY_bam_females:
     input:
@@ -1150,7 +1150,7 @@ rule STAR_samSub_chrX_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule STAR_stats_chrX_bam_males:
     input:
@@ -1175,7 +1175,7 @@ rule STAR_samSub_chrY_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule STAR_stats_chrY_bam_males:
     input:
@@ -1306,7 +1306,7 @@ rule STAR_samSub_chrX_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule STAR_stats_chrX_bam_females:
     input:
@@ -1331,7 +1331,7 @@ rule STAR_samSub_chrY_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule STAR_stats_chrY_bam_females:
     input:
@@ -1491,7 +1491,7 @@ rule STAR_DEF_samSub_chrX_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule STAR_DEF_stats_chrX_bam_males:
     input:
@@ -1516,7 +1516,7 @@ rule STAR_DEF_samSub_chrY_bam_males:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule STAR_DEF_stats_chrY_bam_males:
     input:
@@ -1647,7 +1647,7 @@ rule STAR_DEF_samSub_chrX_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} X > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrX > {output.subBAM}"
 
 rule STAR_DEF_stats_chrX_bam_females:
     input:
@@ -1672,7 +1672,7 @@ rule STAR_DEF_samSub_chrY_bam_females:
     conda:
         srcdir("../workflow/envs/samtools.yaml")
     shell:
-        "{params.samtools} view -b {input.BAM} Y > {output.subBAM}"
+        "{params.samtools} view -b {input.BAM} chrY > {output.subBAM}"
 
 rule STAR_DEF_stats_chrY_bam_females:
     input:
