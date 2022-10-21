@@ -1684,7 +1684,7 @@ rule STAR_DEF_stats_chrY_bam_females:
     params:
         bamtools = bamtools_path
     conda:
-        srcdir("../workflow/envs/samtools.yaml")
+        srcdir("../workflow/envs/bamtools.yaml")
     shell:
         "{params.bamtools} stats -in {input.BAM} > {output.stats}"
 
