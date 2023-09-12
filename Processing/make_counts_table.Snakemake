@@ -1,0 +1,59 @@
+import os
+
+configfile: "config.json"
+
+
+rule all:
+	input:
+	expand(config["featureCounts"]+"{sample}_countsOnly.txt", sample = config["sample_names"]),
+    	expand(config["featureCounts"]+"Brain_geneName_proteinOnly.counts"),
+    	expand(config["featureCounts"]+"Kidney_geneName_proteinOnly.counts"),
+    	expand(config["featureCounts"]+"Blood_geneName_proteinOnly.counts")
+
+#---------------------
+#rule reformat counts: 
+#---------------------
+rule reformat_counts:
+    input:
+        counts = (config["featureCounts"]+"{sample}_STAR.txt")
+    output:
+        counts_only = (config["featureCounts"]+"{sample}_countsOnly.txt")
+    shell:
+        """
+        cut -f7 {input.counts} | sed 1d > {output.counts_only};
+        sed -i 's,../../starAligned/,,g' {output.counts_only};
+        sed -1 's,_STAR_sort_mkdup_rdgrp.bam,,g' {output.counts_only}
+        """
+  
+#---------------------
+#rule make tissue counts file: 
+#---------------------
+rule brain_tissue_counts:
+    input:
+        counts_only = expand(config["featureCounts"]+"{sample}_countsOnly.txt", sample = config["brain_names"])
+    output:
+        tissue_counts = config["featureCounts"]+"Brain_geneName_proteinOnly.counts"
+    shell:
+        """
+        paste {input.counts_only} > {output.tissue_counts}
+        """
+
+rule kidney_tissue_counts:
+    input:
+        counts_only = expand(config["featureCounts"]+"{sample}_countsOnly.txt", sample = config["kidney_names"])
+    output:
+        tissue_counts = config["featureCounts"]+"Kidney_geneName_proteinOnly.counts"
+    shell:
+        """
+        paste {input.counts_only} > {output.tissue_counts}
+        """
+
+rule blood_tissue_counts:
+    input:
+        counts_only = expand(config["featureCounts"]+"{sample}_countsOnly.txt", sample = config["blood_names"])
+    output:
+        tissue_counts = config["featureCounts"]+"Blood_geneName_proteinOnly.counts"
+    shell:
+        """
+        paste {input.counts_only} > {output.tissue_counts}
+        """
